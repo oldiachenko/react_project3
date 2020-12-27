@@ -1,0 +1,19 @@
+.productItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.productItem {
+    border: 1px solid blue;
+    width: 200px;
+    padding-left: 5px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+

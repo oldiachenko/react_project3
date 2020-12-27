@@ -1,0 +1,10 @@
+.header {
+    background-color: cornflowerblue;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart {
+    margin-left: 20px;
+    margin-right: 50px;
+}
