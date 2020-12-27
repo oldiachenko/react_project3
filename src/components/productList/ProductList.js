@@ -8,7 +8,7 @@ function ProductList() {
 
   return (
 
-    <div className={'productList'}>
+    <div className='productList'>
      <ProductItem/>
     </div>
   );
