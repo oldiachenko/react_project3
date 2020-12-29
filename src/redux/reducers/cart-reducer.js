@@ -8,7 +8,14 @@ const initialState = {
 export const cartReducer = (state=initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART : {
-      return {...state, cart: [...state.cart, action.payload]}
+
+      const updatedCart = state.cart.filter((el) => el.id !== action.payload.id)
+
+      if (state.cart.length === updatedCart.length) {
+        updatedCart.push(action.payload)
+      }
+
+      return {...state, cart: updatedCart}
     }
     default: {
       return state

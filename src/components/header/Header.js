@@ -20,17 +20,13 @@ function Header() {
 
   return (
     <div className='header'>
-      <div className='favorite'>
+      <div className='favorite' title={`Total price:${totalPriceFavorite}`}>
         <Favorite/>
         Items: {favoriteItems.length}
-        <br/>
-        Sum: {totalPriceFavorite}
       </div>
-      <div className='cart'>
+      <div className='cart' title={`Total price:${totalPriceCart}`}>
         <ShoppingCart/>
         Items: {cart.length}
-        <br/>
-        Sum: {totalPriceCart}
       </div>
     </div>
   );

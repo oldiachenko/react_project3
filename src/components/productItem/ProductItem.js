@@ -1,47 +1,37 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchFavoriteItem, fetchProductList} from "../../redux/action-creators";
+import React from 'react';
+import {useDispatch} from "react-redux";
+import {fetchFavoriteItem} from "../../redux/action-creators";
 import './productItem.css'
 import {fetchCartItem} from "../../redux/action-creators/cart-action-creators";
 import Favorite from "../svg/Favorite";
 import ShoppingCart from "../svg/ShoppingCart";
 
 
-function ProductItem() {
+function ProductItem({isAddedToFavorite, isAddedToCart, productItem: {id, image, title, price}}) {
   const dispatch = useDispatch()
-  const {productList} = useSelector(({productList: {productList}}) => ({productList}))
-
-  //
-  // const state = useSelector((state) => {
-  //   console.log(state);
-  //   return state
-  // })
-
-  useEffect(() => {
-    dispatch(fetchProductList())
-  }, [dispatch])
 
 
   return (
-    <div className='productItems'>
-      {
-        productList.map((productItem) => (
-            <div className='productItem'>
-              <h3> Product:</h3>
-              <img src={productItem.image} alt='product'/>
-              {productItem.title}
-              <br/>
-              <h3> Price: {productItem.price}</h3>
-              <button onClick={()=>dispatch(fetchFavoriteItem(productItem.id))} >
-                <Favorite/>
-              </button>
-              <button onClick={()=>dispatch(fetchCartItem(productItem.id))}>
-                <ShoppingCart/>
-              </button>
-            </div>
-          )
-        )}
+
+    <div className='productItem'>
+      <h3> Product:</h3>
+      <img src={image} alt='product'/>
+      {title}
+      <br/>
+      <h3> Price: {price}</h3>
+      <button
+        className={isAddedToFavorite ? 'added' : 'notAdded'}
+        onClick={() => dispatch(fetchFavoriteItem(id))}>
+        <Favorite/>
+      </button>
+      <button
+        className={isAddedToCart ? 'added' : 'notAdded'}
+        onClick={() => dispatch(fetchCartItem(id))}>
+        <ShoppingCart/>
+      </button>
     </div>
+
+
   );
 }
 
